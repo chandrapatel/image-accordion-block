@@ -6,7 +6,69 @@
  */
 
 .wp-block-cpb-image-accordion-block {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+	display: grid;
+	column-gap: 24px;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-areas: "c1 c1 c1 c1 c1 c1 c2 c2 c2 c2 c2 c2";
+	width: 100%;
+	border-radius: 30px;
+	overflow: hidden;
+	min-height: 668px;
+	max-width: 1392px !important;
+
+	.accordion-column1 {
+		grid-area: c1;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 60px 80px;
+	}
+
+	.accordion-column2 {
+		grid-area: c2;
+
+		.accordion-header-image {
+			height: 100%;
+		}
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.accordion-wrapper {
+		background-color: #FDECEC;
+		margin-bottom: 5px;
+
+		.accordion-title {
+			font-weight: bold;
+			cursor: pointer;
+			padding: 20px;
+
+			&::after, &.active::after {
+				font-size: 16px;
+				background-color: #FFFFFF;
+				float: right;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				border-radius: 20px;
+			}
+
+			&::after {
+				content: '\02795'; /* Unicode character for "plus" sign (+) */
+			}
+
+			&.active:after {
+				content: "\2796"; /* Unicode character for "minus" sign (-) */
+			}
+		}
+
+		.accordion-content {
+			padding: 0px 20px 20px 20px;
+			display: none;
+			overflow: hidden;
+		}
+	}
 }

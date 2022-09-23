@@ -24,3 +24,22 @@ function cpb_image_accordion_block_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'cpb_image_accordion_block_block_init' );
+
+/**
+ * Enqueue Scripts
+ *
+ * @return void
+ */
+function cpb_enqueue_scripts() {
+
+	wp_enqueue_script(
+		'cpb-accordion',
+		plugin_dir_url( __FILE__ ) . 'src/accordion.js',
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'src/accordion.js' ),
+		true
+	);
+
+}
+add_action( 'wp_enqueue_scripts', 'cpb_enqueue_scripts' );
+add_action( 'admin_enqueue_scripts', 'cpb_enqueue_scripts' );

@@ -7,7 +7,84 @@
 	"category": "media",
 	"icon": "images-alt",
 	"description": "Image Accordion Block",
+	"attributes":{
+		"headerText": {
+			"type": "string",
+			"source": "html",
+			"selector": "div.accordion-header h3"
+		},
+		"headerImageUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div.accordion-header-image img",
+			"attribute": "src"
+		},
+		"headerImageAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div.accordion-header-image img",
+			"attribute": "alt"
+		},
+		"headerImageId": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div.accordion-header-image img",
+			"attribute": "data-id"
+		},
+		"accordion": {
+			"type": "number",
+			"default": 3
+		},
+		"accordionContent": {
+			"type": "array",
+			"default": [],
+			"source": "query",
+			"selector": ".accordion-wrapper",
+			"query": {
+				"title": {
+					"type": "string",
+					"source": "html",
+					"selector": ".accordion-title",
+					"default": ""
+				},
+				"content": {
+					"type": "string",
+					"source": "html",
+					"selector": ".accordion-content",
+					"default": ""
+				}
+			}
+		},
+		"contentImages": {
+			"type": "array",
+			"default": [],
+			"source": "query",
+			"selector": "div.accordion-content-images img",
+			"query": {
+				"url": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "src"
+				},
+				"alt": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "alt",
+					"default": ""
+				},
+				"id": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "data-id"
+				}
+			}
+		}
+	},
 	"supports": {
+		"color": {
+			"text": true,
+			"background": true
+		},
 		"html": false
 	},
 	"textdomain": "image-accordion-block",
