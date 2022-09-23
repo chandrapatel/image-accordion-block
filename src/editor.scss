@@ -5,4 +5,25 @@
  */
 
 .wp-block-cpb-image-accordion-block {
+
+	.accordion-wrapper {
+
+		.accordion-title {
+			cursor: auto;
+
+			&::after, &.active::after {
+				font-size: 16px;
+				background-color: #FFFFFF;
+				float: right;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				border-radius: 20px;
+			}
+		}
+	}
+}
+
+.wp-block-cpb-image-accordion-block.is-selected .accordion-content {
+	display: block;
 }
