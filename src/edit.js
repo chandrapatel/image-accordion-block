@@ -20,7 +20,7 @@ import { useBlockProps, MediaUpload, MediaUploadCheck, RichText, InspectorContro
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/
  */
-import { PanelBody, Button, RangeControl } from '@wordpress/components';
+import { PanelBody, RangeControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -45,12 +45,9 @@ export default function Edit( {
 
 	const {
 		headerText,
-		headerImageUrl,
-		headerImageAlt,
-		headerImageId,
 		accordion,
 		accordionContent,
-		contentImages
+		accordionImages
 	} = attributes;
 
 	const accordionContentHTML = [];
@@ -113,38 +110,49 @@ export default function Edit( {
 			</div>
 
 			<div className='accordion-column2'>
-				<div className="accordion-header-image">
-					<MediaUploadCheck>
-						<MediaUpload
-							onSelect={ ( media ) =>
-								setAttributes(
-									{
-										headerImageUrl: media.url,
-										headerImageAlt: media.alt,
-										headerImageId: media.id,
-									}
-								)
+				<MediaUploadCheck>
+					<MediaUpload
+						onSelect={ ( media ) => {
+
+							let selectedMedia = [];
+
+							// We need to save selected images upto number of accordion plus header image.
+							for ( let i = 0; i < ( accordion + 1); i++ ) {
+
+								selectedMedia[i] = {
+									url: media[i].url,
+									alt: media[i].alt,
+									id: media[i].id,
+								}
+
 							}
-							allowedTypes={ [ 'image' ] }
-							value={ headerImageId }
-							render={ ( { open } ) => {
-								return (
-									<>
-										{ headerImageUrl && (
-											<img src={ headerImageUrl } alt={ headerImageAlt } data-id={ headerImageId } onClick={ open } />
-										) }
-										{ ! headerImageUrl && (
-											<img src='https://via.placeholder.com/150/' onClick={ open } />
-										) }
-										{/* <Button onClick={ open } className="button button-secondary">
-											{ __( 'Open Media Library', 'image-accordion-block' ) }
-										</Button> */}
-									</>
-								);
-							} }
-						/>
-					</MediaUploadCheck>
-				</div>
+
+							setAttributes( { accordionImages: selectedMedia } );
+
+						} }
+						allowedTypes={ [ 'image' ] }
+						multiple="true"
+						value={ accordionImages.map( ( accordionImage ) => accordionImage.id ) }
+						render={ ( { open } ) => {
+
+							return (
+								<div className="accordion-images">
+									{ accordionImages.length > 0 && (
+										accordionImages.map( ( accordionImage, index ) => {
+											return (
+												<img key={index} src={ accordionImage.url } alt={ accordionImage.alt } data-id={ accordionImage.id } data-index={ index } onClick={ open } />
+											)
+										} )
+									) }
+
+									{ accordionImages.length === 0 && (
+										<img src='https://via.placeholder.com/684x668' onClick={ open } />
+									) }
+								</div>
+							);
+						} }
+					/>
+				</MediaUploadCheck>
 			</div>
 		</div>
 	);

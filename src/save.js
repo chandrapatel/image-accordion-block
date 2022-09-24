@@ -19,36 +19,10 @@ export default function save( { attributes }) {
 
 	const {
 		headerText,
-		headerImageUrl,
-		headerImageAlt,
-		headerImageId,
 		accordion,
 		accordionContent,
-		contentImages
+		accordionImages
 	} = attributes;
-
-	const accordionContentHTML = [];
-
-	for ( let i = 0; i < accordion; i++ ) {
-
-		accordionContentHTML.push(
-			(
-				<div className="accordion-wrapper">
-					<RichText.Content
-						tagName="div"
-						className="accordion-title"
-						value={ ( accordionContent[i] ) ? accordionContent[i].title : "" }
-					/>
-					<RichText.Content
-						tagName="div"
-						className="accordion-content"
-						value={ ( accordionContent[i] ) ? accordionContent[i].content : "" }
-					/>
-				</div>
-			)
-		);
-
-	}
 
 	return (
 		<div { ...useBlockProps.save() }>
@@ -59,11 +33,34 @@ export default function save( { attributes }) {
 						value={ headerText }
 					/> { /* Saves <h3>Content added in the editor...</h3> to the database for frontend display */ }
 				</div>
-				{accordionContentHTML}
+				{ accordionContent.length > 0 && (
+					accordionContent.map( ( content, index ) => {
+						return (
+							<div className="accordion-wrapper">
+								<RichText.Content
+									tagName="div"
+									className="accordion-title"
+									value={ content.title }
+								/>
+								<RichText.Content
+									tagName="div"
+									className="accordion-content"
+									value={ content.content }
+								/>
+							</div>
+						)
+					} )
+				) }
 			</div>
 			<div className='accordion-column2'>
-				<div className="accordion-header-image">
-					<img src={ headerImageUrl } alt={ headerImageAlt } data-id={ headerImageId } />
+				<div className="accordion-images">
+					{ accordionImages.length > 0 && (
+						accordionImages.map( ( accordionImage, index ) => {
+							return (
+								<img src={ accordionImage.url } alt={ accordionImage.alt } data-id={ accordionImage.id } data-index={ index } onClick={ open } />
+							)
+						} )
+					) }
 				</div>
 			</div>
 		</div>

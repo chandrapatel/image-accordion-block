@@ -13,27 +13,9 @@
       "source": "html",
       "selector": "div.accordion-header h3"
     },
-    "headerImageUrl": {
-      "type": "string",
-      "source": "attribute",
-      "selector": "div.accordion-header-image img",
-      "attribute": "src"
-    },
-    "headerImageAlt": {
-      "type": "string",
-      "source": "attribute",
-      "selector": "div.accordion-header-image img",
-      "attribute": "alt"
-    },
-    "headerImageId": {
-      "type": "string",
-      "source": "attribute",
-      "selector": "div.accordion-header-image img",
-      "attribute": "data-id"
-    },
     "accordion": {
       "type": "number",
-      "default": 3
+      "default": 2
     },
     "accordionContent": {
       "type": "array",
@@ -55,11 +37,11 @@
         }
       }
     },
-    "contentImages": {
+    "accordionImages": {
       "type": "array",
       "default": [],
       "source": "query",
-      "selector": "div.accordion-content-images img",
+      "selector": ".accordion-images img",
       "query": {
         "url": {
           "type": "string",
@@ -76,6 +58,15 @@
           "type": "string",
           "source": "attribute",
           "attribute": "data-id"
+        }
+      }
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "background": "#E1F1DE",
+          "text": "#3C4043"
         }
       }
     }

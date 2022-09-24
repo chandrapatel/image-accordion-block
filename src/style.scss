@@ -27,8 +27,16 @@
 	.accordion-column2 {
 		grid-area: c2;
 
-		.accordion-header-image {
+		.accordion-images {
 			height: 100%;
+		}
+
+		.accordion-images img {
+			display: none;
+		}
+
+		.accordion-images img:first-child {
+			display: block;
 		}
 	}
 
