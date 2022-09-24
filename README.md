@@ -17,3 +17,9 @@ I have developed this Gutenberg block for learning purpose. Such example(s) help
 
 - [https://store.google.com/us/product/pixel_6a?hl=en-US](https://store.google.com/us/product/pixel_6a?hl=en-US) - I have tried to replicate accordion with images from this link.
 - [How TO - Collapsible/Accordion](https://www.w3schools.com/howto/howto_js_accordion.asp) - I have used code snippet for collapsible accordion from this link.
+
+## Demo
+
+
+https://user-images.githubusercontent.com/9443225/192103909-d9b82343-9718-4772-82d3-35f4cad48727.mp4
+
