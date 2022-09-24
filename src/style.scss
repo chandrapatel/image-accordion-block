@@ -46,8 +46,9 @@
 	}
 
 	.accordion-wrapper {
-		background-color: #FDECEC;
+		background-color: #E1F1DE;
 		margin-bottom: 5px;
+		border-radius: 20px;
 
 		.accordion-title {
 			font-weight: bold;
@@ -70,6 +71,10 @@
 
 			&.active:after {
 				content: "\2796"; /* Unicode character for "minus" sign (-) */
+			}
+
+			&.active {
+				font-size: 30px;
 			}
 		}
 

@@ -65,7 +65,7 @@
 			"type": "object",
 			"default": {
 				"color": {
-					"background": "#E1F1DE",
+					"background": "#EFF7ED",
 					"text": "#3C4043"
 				}
 			}

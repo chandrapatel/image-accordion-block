@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Image Accordion Block
- * Description:       Image Accordion Block
+ * Description:       Image Accordion Block allows user to add accordion with different images. In front-end, corresponding image will be displayed when user click on different accordion.
  * Requires at least: 5.9
  * Requires PHP:      7.0
  * Version:           0.1.0
