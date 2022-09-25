@@ -24,6 +24,10 @@
 		padding: 60px 80px;
 	}
 
+	&.is-style-rtl .accordion-column1 {
+		grid-area: c2;
+	}
+
 	.accordion-column2 {
 		grid-area: c2;
 
@@ -84,4 +88,16 @@
 			overflow: hidden;
 		}
 	}
+}
+
+.wp-block-cpb-image-accordion-block.is-style-rtl {
+
+	.accordion-column1 {
+		grid-area: c2;
+	}
+
+	.accordion-column2 {
+		grid-area: c1;
+	}
+
 }

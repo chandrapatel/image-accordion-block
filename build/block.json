@@ -78,6 +78,17 @@
     },
     "html": false
   },
+  "styles": [
+    {
+      "name": "default",
+      "label": "Content | Image",
+      "isDefault": true
+    },
+    {
+      "name": "rtl",
+      "label": "Image | Content"
+    }
+  ],
   "textdomain": "image-accordion-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
